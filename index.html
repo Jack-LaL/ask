@@ -386,11 +386,7 @@ a:hover {
       <a class="previouss" disabled>&laquo; Previous</a>
       <a class="nextt" id="nextb1">Next &raquo;</a>
     </div>
-    <?php
-        if(isset($_POST['jacklast'])) {
-            echo "This is Button1 that is selected";
-        }
-    ?>
+	  
     <div id="formul" style="display:none">
       <form id="msform" method="post">
         <!-- progressbar -->
@@ -645,10 +641,10 @@ document.querySelector("#bi").addEventListener('change', function() {
 });
 document.querySelector("#ik").addEventListener('change', function() {
     if (this.checked) {
-	    totally.instakill = true
+        totally.instakill = true;
         tospend += 0.1
     } else {
-	    totally.instakill = false;
+	totally.instakill = false;
         tospend -= 0.1
     }
 });
