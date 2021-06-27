@@ -1,0 +1,918 @@
+<html>
+  <head>
+    <title>FeedBack</title>
+    <meta name="theme-color" content="#ff0000">
+    <meta name="google" content="notranslate"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="Send a Feedback or request your custom mod!">
+    <meta name="keywords" content="glitch,me,org,feedback,jack,lal,omg,omfg,gf,bf,mod,petition,hack,free,cash,pay,win,no,scamm,all,real">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+    <style>
+      /* latin-ext */
+      @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {margin: 0; padding: 0;}
+::-webkit-scrollbar {
+ width: 5px;
+ height: 5px;
+}
+::-webkit-scrollbar-thumb {
+ background: #000000;
+ border-radius: 0px;
+ box-shadow: inset -30px -30px 0px #000000;
+}
+::-webkit-scrollbar-thumb:hover{
+ background: #000000;
+}
+::-webkit-scrollbar-track{
+ background: #000000;
+ border-radius: 0px;
+ box-shadow: inset 7px 10px 12px #000000;
+}
+body {
+	font-family: montserrat, arial, verdana;
+  background-color:#000;
+}
+/*form styles*/
+#msform {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+.fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+	display: none;
+}
+/*inputs*/
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+/*buttons*/
+#msform .action-button {
+	width: 100px;
+	background: #FF0000;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #FF0000;
+}
+/*headings*/
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 10px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #FF0000;
+	color: white;
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://fonts.gstatic.com/s/lato/v17/S6u9w4BMUTPHh7USSwaPGR_p.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://fonts.gstatic.com/s/lato/v17/S6u9w4BMUTPHh7USSwiPGQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+      body {
+                margin: 50px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #fff;
+                font-size: 18px;
+                background-color: #000;
+            }
+
+            h1 {
+                color: #fff;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 100px;
+                font-weight: 200;
+                margin-bottom: 0;
+            }
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #ff0000;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.control {
+            font-family: arial;
+            display: block;
+            position: relative;
+            cursor: pointer;
+            padding-top: 3px;
+            font-size: 16px;
+        }
+            .control input {
+                position: absolute;
+                z-index: -1;
+                opacity: 0;
+            }
+        .control_indicator {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background: #cccccc;
+            border: 0px solid #000000;
+            border-radius: 0px;
+        }
+        .control:hover input ~ .control_indicator,
+        .control input:focus ~ .control_indicator {
+            background: #ccc;
+        }
+        
+        .control input:checked ~ .control_indicator {
+            background: #ff0000;
+        }
+        .control:hover input:not([disabled]):checked ~ .control_indicator,
+        .control input:checked:focus ~ .control_indicator {
+            background: #ff0000;
+        }
+        .control input:disabled ~ .control_indicator {
+            background: #888;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .control_indicator:after {
+            box-sizing: unset;
+            content: '';
+            position: absolute;
+            display: none;
+        }
+        .control input:checked ~ .control_indicator:after {
+            display: block;
+        }
+        .control-checkbox .control_indicator:after {
+            left: 8px;
+            top: 4px;
+            width: 3px;
+            height: 8px;
+            border: solid #ffffff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .control-checkbox input:disabled ~ .control_indicator:after {
+            border-color: #7b7b7b;
+        }
+        .control-checkbox .control_indicator::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4.5rem;
+            height: 4.5rem;
+            margin-left: -1.3rem;
+            margin-top: -1.3rem;
+            background: #ff0000;
+            border-radius: 3rem;
+            opacity: 0.6;
+            z-index: 99999;
+            transform: scale(0);
+        }
+        @keyframes s-ripple {
+            0% {
+                transform: scale(0);
+            }
+            20% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+        @keyframes s-ripple-dup {
+           0% {
+               transform: scale(0);
+            }
+           30% {
+                transform: scale(1);
+            }
+            60% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+        .control-checkbox input + .control_indicator::before {
+            animation: s-ripple 250ms ease-out;
+        }
+        .control-checkbox input:checked + .control_indicator::before {
+            animation-name: s-ripple-dup;
+        }   
+.div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 90%;
+  height: 90%;
+  margin: 20px;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+.a {
+  padding: 0;
+  background-color: inherit;
+}     
+.a:hover {
+  background-color: inherit;
+  color: red;
+}
+a:hover {
+  background-color: #b30000;
+  color: black;
+}
+
+.previouss {
+  background-color: #ff0000;
+  color: white;
+}
+
+.previouss[disabled] {
+  background-color: #666;
+  color: #aaa;
+  pointer-events: none;
+}
+.nextt {
+  background-color: #ff0000;
+  color: white;
+}
+.normal {
+  border-left: 0px;
+  border-right:  0px;
+  border-bottom: 0px;
+  box-shadow: 0px;
+}
+    </style>
+  </head>
+  <body>
+    <h1><span id="r1">M</span><span id="r2">o</span><span id="r3">d</span><span id="r4">s</span><span style="color:red">/</span><span id="r5">F</span><span id="r6">e</span><span id="r7">e</span><span id="r8">d</span><span id="r9">b</span><span id="r10">a</span><span id="r11">c</span><span id="r12">k</span></h1><br>
+    
+    <div id="main-container">
+      <div>You want a <span style="color:red">moomoo.io</span> mod/hack and you don't know how to programmation?
+        Do <span style="color:red">not</span> worry! We do it for you at a minimum amount!</div>
+      <br>
+    </div>
+    
+    <div id="buttons-container">
+      <a class="previouss" disabled>&laquo; Previous</a>
+      <a class="nextt" id="nextb1">Next &raquo;</a>
+    </div>
+    <?php
+        if(isset($_POST['jacklast'])) {
+            echo "This is Button1 that is selected";
+        }
+    ?>
+    <div id="formul" style="display:none">
+      <form id="msform" method="post">
+        <!-- progressbar -->
+        <ul id="progressbar">
+          <li class="active">First Step</li>
+          <li>Options</li>
+          <li>Send</li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset class="fieldset">
+          <h2 class="fs-title">First thing first.</h2>
+          <h3 class="fs-subtitle">Step 1</h3>
+          <input type="text" name="email" placeholder="Name(Not real if want)" />
+          <input type="text" name="pass" placeholder="Discord/Email" />
+          <input type="text" name="cpass" placeholder="Discord/Email" />
+          <input type="button" name="next" class="next action-button" value="Next" />
+        </fieldset>
+        <fieldset class="fieldset">
+          <h2 class="fs-title">Options</h2>
+          <h3 class="fs-subtitle">Some options to send</h3>
+          <label class="control control-checkbox" style="color:#000;width:60%;">
+            Accept <a class="a" href="https://mpetiti.glitch.me/docs.txt">this?</a>
+            <input type="checkbox" checked="checked">
+            <div class="control_indicator"></div>
+          </label>
+          <br>
+          <select id="feedormod">
+            <option value="0">FeedBack</option>
+            <option value="1">Petition</option>
+          </select>
+          <input type="button" name="previous" class="previous action-button" value="Previous" />
+          <input type="button" name="next" class="next action-button" value="Next" />
+        </fieldset>
+        <fieldset class="fieldset">
+          <h2 class="fs-title">Send request/feedback</h2>
+          <h3 class="fs-subtitle">We will never share it</h3>
+          
+          
+          
+          <div id="feedback">
+
+<textarea name="feedback" placeholder="Feedback..." style="margin: 0px 0px 10px; resize: none"></textarea>
+
+</div>
+          <div id="petition" style="color:#000">
+            <input type="checkbox" id="ah" style="margin:0px;width:10%">AutoHeal
+            <input type="checkbox" id="ik" style="margin:0px;width:10%">Instakill<br><br>
+            <input type="checkbox" id="bi" style="margin:0px;width:10%">Bow-Insta
+            <input type="checkbox" id="ai" style="margin:0px;width:10%">Age 1 Insta<br><br>
+            <input type="checkbox" id="si" style="margin:0px;width:10%">Sword Insta
+            <input type="checkbox" id="au" style="margin:0px;width:10%">Auto Insta<br><br>
+            <input type="checkbox" id="an" style="margin:0px;width:10%">Anti Insta
+            <input type="checkbox" id="bs" style="margin:0px;width:10%">BoostSpikes<br><br>
+            <input type="checkbox" id="ab" style="margin:0px;width:10%">Anti BoostSpikes<br><br>
+            <input type="checkbox" id="ii" style="margin:0px;width:10%">Invisible Items<br><br>
+            <input type="checkbox" id="ib" style="margin:0px;width:10%">Anti Bull
+            <input type="checkbox" id="fa" style="margin:0px;width:10%">Faster Autoheal<br><br>
+            <input type="checkbox" id="fi" style="margin:0px;width:10%">Faster Instakill<br><br>
+            <input type="checkbox" id="bm" style="margin:0px;width:10%">Basic menu
+            <input type="checkbox" id="nm" style="margin:0px;width:10%">Normal menu
+            <input type="checkbox" id="am" style="margin:0px;width:10%">Advanced menu<br>
+            <input type="checkbox" id="cm" style="margin:0px;width:10%">Custom menu<br><br>
+            <textarea name="10pextra" placeholder="Extra options!" id="10epxtra" style="margin: 0px 0px 10px; resize: none"></textarea>
+            <span id="totalamm" style="color:#000">Total: $0</span>
+          </div>
+          <input type="button" name="previous" class="previous action-button" value="Previous"/>
+          <input type="submit" name="jacklast" value="Submit" id="las" class="submit action-button"/>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+	
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".submit").click(function(){
+})
+
+  function nextb1(){
+    document.getElementById("formul").style.display = "block"
+    document.getElementById("main-container").style.display = "none"
+    document.getElementById("buttons-container").style.display = "none"
+    window.scroll({
+      top: 500,
+      behavior: 'smooth'
+    });
+  }
+  function nextb2(){
+    document.getElementById("formul").style.display = "none"
+    document.getElementById("main-container").style.display = "none"
+    document.getElementById("buttons-container").style.display = "none"
+  }
+  document.getElementById("las").onclick = function(){nextb2()};
+  document.getElementById("nextb1").onclick = function(){nextb1()}
+
+ setInterval(()=>{
+   if(document.getElementById("feedormod").value == "1"){
+     document.getElementById("feedback").style.display = "none"
+     document.getElementById("petition").style.display = "block"
+   } else if(document.getElementById("feedormod").value == "0"){
+     document.getElementById("feedback").style.display = "block"
+     document.getElementById("petition").style.display = "none"
+   }
+ })
+var tospend = 0;
+document.querySelector("#ah").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.1
+    } else {
+        tospend -= 0.1
+    }
+});
+document.querySelector("#si").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.2
+    } else {
+        tospend -= 0.2
+    }
+});
+document.querySelector("#ai").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.2
+    } else {
+        tospend -= 0.2
+    }
+});
+document.querySelector("#bi").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.2
+    } else {
+        tospend -= 0.2
+    }
+});
+document.querySelector("#ik").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.1
+    } else {
+        tospend -= 0.1
+    }
+});
+document.querySelector("#au").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.5
+    } else {
+        tospend -= 0.5
+    }
+});
+document.querySelector("#an").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.5
+    } else {
+        tospend -= 0.5
+    }
+});
+document.querySelector("#bs").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.1
+    } else {
+        tospend -= 0.1
+    }
+});
+document.querySelector("#ab").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.3
+    } else {
+        tospend -= 0.3
+    }
+});
+document.querySelector("#ii").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 4
+    } else {
+        tospend -= 4
+    }
+});
+document.querySelector("#fa").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.2
+    } else {
+        tospend -= 0.2
+    }
+});
+document.querySelector("#ib").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 4
+    } else {
+        tospend -= 4
+    }
+});
+document.querySelector("#fi").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.2
+    } else {
+        tospend -= 0.2
+    }
+});
+document.querySelector("#bm").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.2
+    } else {
+        tospend -= 0.2
+    }
+});
+document.querySelector("#nm").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.3
+    } else {
+        tospend -= 0.3
+    }
+});
+document.querySelector("#am").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.4
+    } else {
+        tospend -= 0.4
+    }
+});
+document.querySelector("#cm").addEventListener('change', function() {
+    if (this.checked) {
+        tospend += 0.5
+    } else {
+        tospend -= 0.5
+    }
+});
+
+var result = 0;
+var cash = 0;
+var tospendLast = 0;
+var newz;
+var first = document.getElementById("10epxtra").value;
+setInterval(()=>{
+  cash = Number(tospend) + Number(tospendLast);
+  var cahz = cash.toString().substr(0,3);
+  var cazh = cash.toString().substr(0,4);
+  if(cash < 10){result = cahz}else {result = cazh};
+  document.getElementById("totalamm").innerHTML = "Total: $" + result
+  newz = document.getElementById("10epxtra").value;
+  if(first != newz){
+    first = newz;
+    if(newz == ""){
+      tospendLast = 0;
+    } else {
+      tospendLast = 2;
+    }
+  }
+})
+
+
+setInterval(()=>{
+  document.getElementById("r1").style.color = "#ff0000"
+  document.getElementById("r2").style.color = "#fff"
+  document.getElementById("r3").style.color = "#fff"
+  document.getElementById("r4").style.color = "#fff"
+  document.getElementById("r5").style.color = "#fff"
+  document.getElementById("r6").style.color = "#fff"
+  document.getElementById("r7").style.color = "#fff"
+  document.getElementById("r8").style.color = "#fff"
+  document.getElementById("r9").style.color = "#fff"
+  document.getElementById("r10").style.color = "#fff"
+  document.getElementById("r11").style.color = "#fff"
+  document.getElementById("r12").style.color = "#fff"
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#ff0000"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },50);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#ff0000"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },100);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#ff0000"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },150);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#ff0000"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },200);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#ff0000"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },250);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#ff0000"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },300);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#ff0000"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },350);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#ff0000"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },400);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#ff0000"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },450);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#ff0000"
+    document.getElementById("r12").style.color = "#fff"
+  },500);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#ff0000"
+  },550);
+  setTimeout(()=>{
+    document.getElementById("r1").style.color = "#fff"
+    document.getElementById("r2").style.color = "#fff"
+    document.getElementById("r3").style.color = "#fff"
+    document.getElementById("r4").style.color = "#fff"
+    document.getElementById("r5").style.color = "#fff"
+    document.getElementById("r6").style.color = "#fff"
+    document.getElementById("r7").style.color = "#fff"
+    document.getElementById("r8").style.color = "#fff"
+    document.getElementById("r9").style.color = "#fff"
+    document.getElementById("r10").style.color = "#fff"
+    document.getElementById("r11").style.color = "#fff"
+    document.getElementById("r12").style.color = "#fff"
+  },600);
+},5000)
+</script>
+
+<!--<fieldset class="normal" style="float:left;width:100%">
+            <legend style="color:#000">Select some:</legend>
+            <div style="padding:2px;color:#000;font-size:12px;overflow:hidden">
+              <div>
+                <input type="checkbox" style="width: 10%"/>AutoHeal
+                <input type="checkbox" style="width: 10%;margin-left:6px;"/>Instakill<br>
+              </div>
+              <div>
+                <input type="checkbox" style="width: 10%"/>Bow-Insta
+                <input type="checkbox" style="width: 10%;margin-left:6px;"/>Age 1 Insta<br>
+              </div>
+              <div>
+                <input type="checkbox" style="width: 10%"/>Sword+Katana Insta
+                <input type="checkbox" style="width: 10%;margin-left:6px;"/><br>
+              </div>
+            </div>
+          </fieldset>-->
