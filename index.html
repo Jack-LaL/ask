@@ -476,6 +476,7 @@ $(".next").click(function(){
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
 	
+	
 	//activate next step on progressbar using the index of next_fs
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 	
@@ -598,7 +599,7 @@ function sendMsg(title,msg,naem){
 		+ " | Anti instakill: " +totally.antiinsta + " | BoostSpikes: " + totally.boostspikes + " | AntiBs: " + totally.antibs
 		+ " | Inivisible Items:"+ totally.invitems + " | Faster Autoheal: " + totally.fasterautoheal + " | Faster Instakill: " + totally.fasterinstakill
 		+ " | AntiBull: " + totally.antibull + " | Menu Custom: " + totally.menucustom + " | Menu Normal: " + totally.menunormal + " | Menu Basic: " + totally.menubasic + " | Menu Advanced: " + totally.menuadvanced + ".."
-		sendMsg((FoP == 0 ? "FeedBack" : "Petition"), (FoP == 0 ? Fbk : Peti + "$: " + result), )
+		sendMsg((FoP == 0 ? "FeedBack" : "Petition"), (FoP == 0 ? Fbk : (Peti + "$: " + result)), NameMailMail)
 	})
 var tospend = 0;
 var totally = {autoheal:false, swordinsta:false, ageinsta:false,bowinsta: false,instakill: false,autoinsta:false,antinsta:false,boostspikes:false,antibs:false
