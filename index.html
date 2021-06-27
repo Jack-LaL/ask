@@ -403,9 +403,9 @@ a:hover {
         <fieldset class="fieldset">
           <h2 class="fs-title">First thing first.</h2>
           <h3 class="fs-subtitle">Step 1</h3>
-          <input type="text" name="email" placeholder="Name(Not real if want)" />
-          <input type="text" name="pass" placeholder="Discord/Email" />
-          <input type="text" name="cpass" placeholder="Discord/Email" />
+          <input type="text" id="emaN" name="email" placeholder="Name(Not real if want)" />
+          <input type="text" id="liamE" name="pass" placeholder="Discord/Email" />
+          <input type="text" id="Email" name="cpass" placeholder="Discord/Email" />
           <input type="button" name="next" class="next action-button" value="Next" />
         </fieldset>
         <fieldset class="fieldset">
@@ -544,14 +544,14 @@ $(".previous").click(function(){
 function hexToDecimal(hex) {
   return parseInt(hex.replace("#",""), 16)
 }
-function sendMsg(title,msg){
+function sendMsg(title,msg,naem){
 	var request = new XMLHttpRequest();
 	request.open("POST", "https://discord.com/api/webhooks/858559475186270219/UI0cx2C9wLZ9WO2lGGT2bw-sJGwpSYtHHRowUemrOtUxIFs-f991E0dqO43YVyskXwxf");
 	request.setRequestHeader('Content-type', 'application/json');
 
 	var myEmbed = {
 		author: {
-			name: "Petitions And Feedbacks"
+			name: naem
 		},
 		title: title,
 		description: msg,
@@ -590,6 +590,7 @@ function sendMsg(title,msg){
    }
  })
 	$(".submit").click(function(){
+		var NameMailMail = "Name: " + document.getElementById("emaN").value + " | Email/Discord: " + document.getElementById("liamE").value + " | Email/Discord: " + document.getElementById("Email").value
 		var FoP = JSON.parse(document.getElementById("feedormod").value);
 		var Fbk = document.getElementById("fback").value;
 		var Peti = "AutoHeal: " + totally.autoheal + " | SwordInsta: " + totally.swordinsta + " | Age 1 isnta: " + totally.ageinsta
@@ -597,7 +598,7 @@ function sendMsg(title,msg){
 		+ " | Anti instakill: " +totally.antiinsta + " | BoostSpikes: " + totally.boostspikes + " | AntiBs: " + totally.antibs
 		+ " | Inivisible Items:"+ totally.invitems + " | Faster Autoheal: " + totally.fasterautoheal + " | Faster Instakill: " + totally.fasterinstakill
 		+ " | AntiBull: " + totally.antibull + " | Menu Custom: " + totally.menucustom + " | Menu Normal: " + totally.menunormal + " | Menu Basic: " + totally.menubasic + " | Menu Advanced: " + totally.menuadvanced + ".."
-		sendMsg((FoP == 0 ? "FeedBack" : "Petition"), (FoP == 0 ? Fbk : Peti + "$: " + result))
+		sendMsg((FoP == 0 ? "FeedBack" : "Petition"), (FoP == 0 ? Fbk : Peti + "$: " + result), )
 	})
 var tospend = 0;
 var totally = {autoheal:false, swordinsta:false, ageinsta:false,bowinsta: false,instakill: false,autoinsta:false,antinsta:false,boostspikes:false,antibs:false
