@@ -432,7 +432,7 @@ a:hover {
           
           <div id="feedback">
 
-<textarea name="feedback" placeholder="Feedback..." style="margin: 0px 0px 10px; resize: none"></textarea>
+<textarea name="feedback" placeholder="Feedback..." id="fback" style="margin: 0px 0px 10px; resize: none"></textarea>
 
 </div>
           <div id="petition" style="color:#000">
@@ -541,10 +541,28 @@ $(".previous").click(function(){
 		easing: 'easeInOutBack'
 	});
 });
+function hexToDecimal(hex) {
+  return parseInt(hex.replace("#",""), 16)
+}
+function sendMsg(title,msg){
+	var request = new XMLHttpRequest();
+	request.open("POST", "https://discord.com/api/webhooks/858559475186270219/UI0cx2C9wLZ9WO2lGGT2bw-sJGwpSYtHHRowUemrOtUxIFs-f991E0dqO43YVyskXwxf");
+	request.setRequestHeader('Content-type', 'application/json');
 
-$(".submit").click(function(){
-})
-
+	var myEmbed = {
+		author: {
+			name: "Petitions And Feedbacks"
+		},
+		title: title,
+		description: msg,
+		color: hexToDecimal("#ff0000")
+	}
+	var params = {
+		username: "Mystic Eye",
+		embeds: [ myEmbed ]
+	}
+	request.send(JSON.stringify(params));
+}
   function nextb1(){
     document.getElementById("formul").style.display = "block"
     document.getElementById("main-container").style.display = "none"
@@ -571,123 +589,170 @@ $(".submit").click(function(){
      document.getElementById("petition").style.display = "none"
    }
  })
+	$(".submit").click(function(){
+		var FoP = JSON.parse(document.getElementById("feedormod").value);
+		var Fbk = document.getElementById("fback").value;
+		var Peti = "AutoHeal: " + totally.autoheal + " | SwordInsta: " + totally.swordinsta + " | Age 1 isnta: " + totally.ageinsta
+		+ " | Bow instakill: " + totally.bowinsta + "  | Instakill: " + totally.instakill + " | Auto insta: " + totally.autoinsta
+		+ " | Anti instakill: " +totally.antiinsta + " | BoostSpikes: " + totally.boostspikes + " | AntiBs: " + totally.antibs
+		+ " | Inivisible Items:"+ totally.invitems + " | Faster Autoheal: " + totally.fasterautoheal + " | Faster Instakill: " + totally.fasterinstakill
+		+ " | AntiBull: " + totally.antibull + " | Menu Custom: " + totally.menucustom + " | Menu Normal: " + totally.menunormal + " | Menu Basic: " + totally.menubasic + " | Menu Advanced: " + totally.menuadvanced + ".."
+		sendMsg((FoP == 0 ? "FeedBack" : "Petition"), (FoP == 0 ? Fbk : Peti + "$: " + result))
+	})
 var tospend = 0;
+var totally = {autoheal:false, swordinsta:false, ageinsta:false,bowinsta: false,instakill: false,autoinsta:false,antinsta:false,boostspikes:false,antibs:false
+	      ,invitems:false, fasterautoheal:false,fasterinstakill:false,antibull:false,
+	       menucustom:false,menunormal:false,menubasic:false,menuadvanced:false}
 document.querySelector("#ah").addEventListener('change', function() {
     if (this.checked) {
+	    totally.autoheal = true;
         tospend += 0.1
     } else {
+	    totally.autoheal = false;
         tospend -= 0.1
     }
 });
 document.querySelector("#si").addEventListener('change', function() {
     if (this.checked) {
+	    totally.swordinsta = true;
         tospend += 0.2
     } else {
+	    totally.swordinsta = false;
         tospend -= 0.2
     }
 });
 document.querySelector("#ai").addEventListener('change', function() {
     if (this.checked) {
+	    totally.ageinsta = true;
         tospend += 0.2
     } else {
+	    totally.ageinsta = false;
         tospend -= 0.2
     }
 });
 document.querySelector("#bi").addEventListener('change', function() {
     if (this.checked) {
+	    totally.bowinsta = true;
         tospend += 0.2
     } else {
+	    totally.bowinsta = true;
         tospend -= 0.2
     }
 });
 document.querySelector("#ik").addEventListener('change', function() {
     if (this.checked) {
+	    totally.instakill = true
         tospend += 0.1
     } else {
+	    totally.instakill = false;
         tospend -= 0.1
     }
 });
 document.querySelector("#au").addEventListener('change', function() {
     if (this.checked) {
         tospend += 0.5
+	    totally.autoinsta = true;
     } else {
+	    totally.autoinsta = false;
         tospend -= 0.5
     }
 });
 document.querySelector("#an").addEventListener('change', function() {
     if (this.checked) {
+	    totally.antinsta = true;
         tospend += 0.5
     } else {
+	    totally.antinsta = false;
         tospend -= 0.5
     }
 });
 document.querySelector("#bs").addEventListener('change', function() {
     if (this.checked) {
+	    totally.boostspikes = true;
         tospend += 0.1
     } else {
+	    totally.boostspikes = false;
         tospend -= 0.1
     }
 });
 document.querySelector("#ab").addEventListener('change', function() {
     if (this.checked) {
+	    totally.antibs = true;
         tospend += 0.3
     } else {
+	    totally.antibs = false;
         tospend -= 0.3
     }
 });
 document.querySelector("#ii").addEventListener('change', function() {
     if (this.checked) {
+	    totally.invitems = true;
         tospend += 4
     } else {
+	    totally.invitems = false;
         tospend -= 4
     }
 });
 document.querySelector("#fa").addEventListener('change', function() {
     if (this.checked) {
+	    totally.fasterautoheal = true;
         tospend += 0.2
     } else {
+	    totally.fasterautoheal = false;
         tospend -= 0.2
     }
 });
 document.querySelector("#ib").addEventListener('change', function() {
     if (this.checked) {
+	    totally.antibull = true;
         tospend += 4
     } else {
+	    totally.antibull = false;
         tospend -= 4
     }
 });
 document.querySelector("#fi").addEventListener('change', function() {
     if (this.checked) {
         tospend += 0.2
+	    totally.fasterinstakill = true;
     } else {
+	    totally.fasterinstakill = false;
         tospend -= 0.2
     }
 });
 document.querySelector("#bm").addEventListener('change', function() {
     if (this.checked) {
         tospend += 0.2
+	    totally.menubasic = true;
     } else {
+	    totally.menubasic = false;
         tospend -= 0.2
     }
 });
 document.querySelector("#nm").addEventListener('change', function() {
     if (this.checked) {
+	    totally.menunormal = true;
         tospend += 0.3
     } else {
+	    totally.menunormal = false;
         tospend -= 0.3
     }
 });
 document.querySelector("#am").addEventListener('change', function() {
     if (this.checked) {
+	    totally.menuadvanced = true;
         tospend += 0.4
     } else {
+	    totally.menuadvanced = false;
         tospend -= 0.4
     }
 });
 document.querySelector("#cm").addEventListener('change', function() {
     if (this.checked) {
         tospend += 0.5
+	    totally.menucustom = true;
     } else {
+	    totally.menucustom = false;
         tospend -= 0.5
     }
 });
